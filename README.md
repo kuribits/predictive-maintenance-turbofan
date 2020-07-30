@@ -1,5 +1,10 @@
 # Predictive Maintenance of Turbofan Engines with PySyft
 
+<p align="center">
+<img src="images/turbofan.png" alt="Graphic of a turbofan engine. Source: The Guardian." width="700">
+  <br /><em>Image source: <a href="https://www.theguardian.com/preparing-for-9-billion/ng-interactive/2017/sep/27/reinventing-jet-engine-airplanes-technology-turbofan-engine">The Guardian</a>.</em>
+</p>
+
 This repository contains code for using Turbofan dataset and PySyft to generate predictions of engine failure based on models trained using Federated Learning (FL).
 
 Based on good work of the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), we bring up to date Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. Methods like this help turbofan engine manufacturers better plan maintenance schedules without sacrificing competitiveness.
@@ -34,6 +39,7 @@ In addition to the preprocessing done by matthiaslau, we also:
 ### Running the instances
 
 An idealised configuration for FL might look like this:
+
 <img src="/images/network.png" alt="Idealised schematic of FL network components." width="500">
 
 To run our network components, we use AWS EC2 instances with the following specifications (otherwise left to default):
