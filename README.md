@@ -1,7 +1,8 @@
-# Improved Predictive Maintenance of Turbofan Engines
+# Predictive Maintenance of Turbofan Engines with PySyft
+
 This repository contains code for using Turbofan dataset and PySyft to generate predictions of engine failure based on models trained using Federated Learning (FL).
 
-This repository is based on the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), which demonstrated how to run Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. This would help turbofan engine manufacturers better plan maintenance schedules to prevent unexpected engine downtime.
+Based on good work of the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), we bring up to date Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. Methods like this help turbofan engine manufacturers better plan maintenance schedules without sacrificing competitiveness.
 
 PySyft has gone through substantial refactoring in the 5 months since its last commit. This repository attempts to bring the Turbofan POC up-to-date, and introduce experimental results on the combinatorial effects of FL and: 
 
@@ -9,6 +10,7 @@ PySyft has gone through substantial refactoring in the 5 months since its last c
 * Non-independently and identically distributed datasets (as is often the case for federated datasets)
 
 ## Turbofan Dataset
+
 [NASA's Turbofan Dataset](https://data.nasa.gov/dataset/Turbofan-engine-degradation-simulation-data-set/vrks-gjie) consists of engine degradation data, where C-MAPSS engine simulations were run to failure, and various operational and sensor values simulated.
 
 The matthiaslau POC uses the FD001 files in the dataset, divides the dataset into four sets. In our case, the split is as follows:
@@ -26,9 +28,11 @@ In addition to the preprocessing done by matthiaslau, we also:
 * Add support for differential privacy to data using a Laplacian mechanism, which the probability of adding noise set at 0.2 by default.
 
 ## Network set-up
+
 ### Pre-requisites
 
 ### Running the instances
+
 An idealised configuration for FL might look like this:
 <img src="/images/network.png" alt="Idealised schematic of FL network components." width="500">
 
@@ -53,17 +57,21 @@ bash init.sh
 ```
 
 ## Run PyGrid components in the background
+
 See Part 1.1 of `distribute_dataset.ipynb` for detailed instructions on how to initialise the network components. NOTE: A deprecation notice has been issued for PyGridNode, so this method is subject to change in the near future.
 
 ## Distribute data to workers
+
 In our case, the workers do not already host the datasets on their servers. We use `distribute_dataset.ipynb` to distribute 2 lots of data from the "central server" Alice to Bob.
 
 Included in this notebook is an option to add differential privacy to the data, according to a certain probability to add noise (arbitratily chosen to be 0.2 by default).
 
 ## Run training
+
 Training is run using`train.ipynb`. Feel free to play with the various hyperparameters.
 
 ## Testing
+
 Saved models can be tested using `test.ipynb`, which outputs the mean error on the test dataset.
 
 ## References
