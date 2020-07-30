@@ -63,5 +63,9 @@ Included in this notebook is an option to add differential privacy to the data, 
 ## Run training
 Training is run using`train.ipynb`. Feel free to play with the various hyperparameters.
 
+## Testing
+Saved models can be tested using `test.ipynb`, which outputs the mean error on the test dataset.
+
 ## References
 1. [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC)
+1. [Federated Learning for Credit Scoring at OpenMined](https://blog.openmined.org/federated-credit-scoring/)
