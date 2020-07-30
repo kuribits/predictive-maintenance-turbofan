@@ -93,6 +93,6 @@ Training is run using`train.ipynb`. Feel free to play with the various hyperpara
 Saved models can be tested using `test.ipynb`, which outputs the mean error on the test dataset.
 
 ## With thanks to
-1. Prof Li Zeng Xiang at the Institute of High Performance Computing, Singapore
+1. Prof Li Zengxiang while he was at the Institute of High Performance Computing, Singapore
 1. [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC)
 1. [Federated Learning for Credit Scoring at OpenMined](https://blog.openmined.org/federated-credit-scoring/)
