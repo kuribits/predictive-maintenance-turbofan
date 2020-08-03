@@ -49,15 +49,7 @@ In addition to the preprocessing done by matthiaslau, I also:
 
 ## Network set-up
 
-In this example, we will distribute Turbofan data from a local directory to 2 workers. We will then run training across these 2 federated datasets. Before running the included notebooks, make sure to run the following processes at the following:
-
-1. Instance 1
-    - PyGridNetwork at port 5000
-    - This Jupyter Notebook at port 8000—you should be able to run this notebook on any server which is running a PyGridNetwork, or PyGridNode associated with the PyGridNetwork.
-    
-1. Instance 2
-    - Worker Bob: PyGridNode at port 3000
-    - Worker Alice: PyGridNode at port 3001
+In this example, we will distribute Turbofan data from a local directory to 2 workers. We will then run training across these 2 federated datasets. For this purpose, we need to initialise the required network components.
 
 ### Start instances
 
@@ -77,6 +69,16 @@ For our POC, I simplify the configuration by using 2 instances:
     1. Runs Jupyter Notebooks contained in this repository: to issue FL instructions to workers
 1. Instance Bob (can be understood as comprising multiple data owners)
     1. Runs several [PyGridNodes](https://github.com/OpenMined/PyGridNode)
+
+We run the following processes at the following ports:
+
+  1. Instance 1
+      - PyGridNetwork at port 5000
+      - This Jupyter Notebook at port 8000—you should be able to run this notebook on any server which is running a PyGridNetwork, or PyGridNode associated with the PyGridNetwork.
+      
+  1. Instance 2
+      - Worker Bob: PyGridNode at port 3000
+      - Worker Alice: PyGridNode at port 3001
 
 ### Create required environments
 
@@ -106,7 +108,9 @@ For allowing workers to communicate with the PyGridNetwork process, start the de
   
 ## Initialise the repository
 
-On a chosen instance that has a PyGridNetwork or PyGridNode process running in the background, clone this repository. Descend into the cloned repository and run: `bash init.sh` to initialise the repository, and download and preprocess the dataset.
+On a chosen instance that has a PyGridNetwork or PyGridNode process running in the background, clone this repository. 
+
+Descend into the cloned repository and run: `bash init.sh` to initialise the repository, and download and preprocess the dataset.
 
 ## Distribute data to workers
 
