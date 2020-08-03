@@ -49,9 +49,17 @@ In addition to the preprocessing done by matthiaslau, I also:
 
 ## Network set-up
 
-### Pre-requisites
+In this example, we will distribute Turbofan data from a local directory to 2 workers. We will then run training across these 2 federated datasets. Before running the included notebooks, make sure to run the following processes at the following:
 
-### Running the instances
+1. Instance 1
+    - PyGridNetwork at port 5000
+    - This Jupyter Notebook at port 8000—you should be able to run this notebook on any server which is running a PyGridNetwork, or PyGridNode associated with the PyGridNetwork.
+    
+1. Instance 2
+    - Worker Bob: PyGridNode at port 3000
+    - Worker Alice: PyGridNode at port 3001
+
+### Start instances
 
 An idealised configuration for FL might look like this:
 
@@ -69,14 +77,36 @@ For our POC, I simplify the configuration by using 2 instances:
     1. Runs Jupyter Notebooks contained in this repository: to issue FL instructions to workers
 1. Instance Bob (can be understood as comprising multiple data owners)
     1. Runs several [PyGridNodes](https://github.com/OpenMined/PyGridNode)
+
+### Create required environments
+
+We recommend using conda environments or your preferred environment manager due to conflicts between the requirements for PySyft, and PyGridNetwork and PyGridNode.
+
+### Running PyGridNetwork in the background
+  
+For allowing communication *between* training workers and any coordinating servers, we run *one* PyGridNetwork process on *one* server of choice as follows:
+
+1. Clone [PyGridNetwork](https://github.com/OpenMined/PyGridNetwork)
+1. Descend into cloned PyGridNetwork directory
+1. Create and activate `conda` environment (can be shared by PyGridNetwork and PyGridNode)
+1. Install dependencies: `pip install openmined.gridnetwork`
+1. Run PyGridNetwork: `python -m gridnetwork --port DESIRED_PORT --start_local_db `
+
+### Running PyGridNode in the background
+
+For allowing workers to communicate with the PyGridNetwork process, start the desired number of PyGridNodes (equal to number of desired workers) per server. The following steps should be taken per desired worker:
+
+1. Clone [PyGridNode](https://github.com/OpenMined/PyGridNode)
+1. Descend into cloned PyGridNode directory
+1. Create and activate `conda` environment (can be shared by PyGridNetwork and PyGridNode)
+1. Install dependencies: `pip install .`
+1. Run PyGridNode: `python -m gridnode --id alice --port DESIRED_PORT --host SERVER_IPV4_ADDRESS --gateway_url HTTPS_URL_OF_PYGRIDNETWORK_SERVER`
+
+(NOTE: PyGridNode will be deprecated with its function moved to the PySyft library). 
   
 ## Initialise the repository
 
-Clone this repository and run: `bash init.sh` to initialise the repository, and download and preprocess the dataset.
-
-## Run PyGrid components in the background
-
-See Part 1.1 of `distribute_dataset.ipynb` for detailed instructions on how to initialise the network components. NOTE: A deprecation notice has been issued for PyGridNode, so this method is subject to change in the near future.
+On a chosen instance that has a PyGridNetwork or PyGridNode process running in the background, clone this repository. Descend into the cloned repository and run: `bash init.sh` to initialise the repository, and download and preprocess the dataset.
 
 ## Distribute data to workers
 
