@@ -7,12 +7,25 @@
 
 This repository contains code for using Turbofan dataset and PySyft to generate predictions of engine failure based on models trained using Federated Learning (FL).
 
-Based on good work of the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), I bring up to date Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. Methods like this help turbofan engine manufacturers better plan maintenance schedules without sacrificing competitiveness.
+Based on the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), I bring up to date Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. Methods like this help turbofan engine manufacturers better plan maintenance schedules without sacrificing competitiveness.
 
 PySyft has gone through substantial refactoring in the 5 months since its last commit. This repository attempts to bring the Turbofan POC up-to-date, and introduce experimental results on the combinatorial effects of FL and: 
 
 * Differential privacy, added at different levels
 * Non-independently and identically distributed datasets (as is often the case for federated datasets)
+
+## Requirements
+
+```
+python>=3.7
+syft>=0.2.6
+torch==1.4.0
+pandas
+flask
+tqdm
+```
+
+To install requirements, run `pip install -r requirements.txt`.
 
 ## Turbofan Dataset
 
