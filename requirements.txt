@@ -1,5 +1,5 @@
-python>=3.7
-syft>=0.2.6
+python~=3.7
+syft=0.2.7
 torch==1.4.0
 pandas
 flask
