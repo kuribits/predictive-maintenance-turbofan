@@ -97,7 +97,7 @@ We run the following processes at the following ports:
 
 We recommend using conda environments or your preferred environment manager due to conflicts between the requirements for PySyft, and PyGridNetwork and PyGridNode.
 
-### Running PyGridNetwork in the background
+### Run PyGridNetwork in the background on one instance
   
 For allowing communication *between* training workers and any coordinating servers, we run *one* PyGridNetwork process on *one* server of choice as follows:
 
@@ -107,7 +107,7 @@ For allowing communication *between* training workers and any coordinating serve
 1. Install dependencies: `pip install openmined.gridnetwork`
 1. Run PyGridNetwork: `python -m gridnetwork --port DESIRED_PORT --start_local_db `
 
-### Running PyGridNode in the background
+### Run PyGridNode in the background on given number of instances
 
 For allowing workers to communicate with the PyGridNetwork process, start the desired number of PyGridNodes (equal to number of desired workers) per server. The following steps should be taken per desired worker:
 
@@ -125,19 +125,25 @@ On a chosen instance that has a PyGridNetwork or PyGridNode process running in t
 
 Descend into the cloned repository and run: `bash init.sh` to initialise the repository, and download and preprocess the dataset.
 
-## Distribute data to workers
+## Distribute data from central server to workers
 
 In our case, the workers do not already host the datasets on their servers. I use `distribute_dataset.ipynb` to distribute 2 lots of data from the "central server" Alice to Bob.
 
 Included in this notebook is an option to add differential privacy to the data, according to a certain probability to add noise (arbitratily chosen to be 0.2 by default).
 
+For this purpose, run `bash init.sh` on the central server.
+
 ## Run training
 
-Training is run using`train.ipynb`. Feel free to play with the various hyperparameters.
+Training is run using`train.ipynb` on the central server. Feel free to play with the various hyperparameters.
 
 ## Testing
 
-Saved models can be tested using `test.ipynb`, which outputs the mean error on the test dataset.
+Saved models can be tested using `test.ipynb` on the central server, which outputs the mean error on the test dataset.
+
+## Alternative network configurations
+It is also possible to run each of the notebooks from an instance with a node, rather than a gateway in our case, which is connected to the gateway.
+
 
 ## With thanks to
 1. Prof Li Zengxiang while he was at the Institute of High Performance Computing, Singapore
