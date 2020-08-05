@@ -9,12 +9,13 @@ This repository contains code for using Turbofan dataset and PySyft to generate 
 
 Based on the [Turbofan Federated Learning POC by matthiaslau](https://github.com/matthiaslau/Turbofan-Federated-Learning-POC), I bring up to date Federated Learning on the Turbofan simulated engine dataset for prediction of engines' Remaining Useful Life. Methods like this help turbofan engine manufacturers better plan maintenance schedules without sacrificing competitiveness.
 
-PySyft has gone through substantial refactoring in the 5 months since its last commit. This repository attempts to bring the Turbofan POC up-to-date, and introduce experimental results on the combinatorial effects of FL and: 
+PySyft has gone through substantial refactoring in the mid-2020. This repository attempts to bring the OpenMined Turbofan POC up-to-date, and introduce experimental results on the combinatorial effects of FL and: 
 
 * Differential privacy, added at different levels
 * Non-independently and identically distributed datasets (as is often the case for federated datasets)
 
 ## Requirements
+The requirements for running the included notebooks on the central server are as follows. NOTE: the network infrastructure has different requirements; see the section on "Create required environments".
 
 ```
 python>=3.7
@@ -103,7 +104,7 @@ For allowing communication *between* training workers and any coordinating serve
 
 1. Clone [PyGridNetwork](https://github.com/OpenMined/PyGridNetwork)
 1. Descend into cloned PyGridNetwork directory
-1. Create and activate `conda` environment (can be shared by PyGridNetwork and PyGridNode)
+1. Create and activate `conda` environment (used to run both PyGridNetwork and PyGridNode)
 1. Install dependencies: `pip install openmined.gridnetwork`
 1. Run PyGridNetwork: `python -m gridnetwork --port DESIRED_PORT --start_local_db `
 
@@ -113,7 +114,7 @@ For allowing workers to communicate with the PyGridNetwork process, start the de
 
 1. Clone [PyGridNode](https://github.com/OpenMined/PyGridNode)
 1. Descend into cloned PyGridNode directory
-1. Create and activate `conda` environment (can be shared by PyGridNetwork and PyGridNode)
+1. Create and activate `conda` environment (used to run both PyGridNetwork and PyGridNode)
 1. Install dependencies: `pip install .`
 1. Run PyGridNode: `python -m gridnode --id alice --port DESIRED_PORT --host SERVER_IPV4_ADDRESS --gateway_url HTTPS_URL_OF_PYGRIDNETWORK_SERVER`
 
